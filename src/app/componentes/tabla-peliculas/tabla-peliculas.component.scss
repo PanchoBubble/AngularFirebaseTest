@@ -1,0 +1,51 @@
+td {
+    vertical-align: middle;
+}
+tr {
+    &:hover{
+        cursor: pointer;
+        td{
+            background-color: #212529c7;
+        }
+    }
+}
+table {
+    table-layout: fixed;
+    min-width: 875px;
+}
+
+.-modal{
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 100px !important;
+
+    &-bg{
+        position: fixed;
+        width: 110vw;
+        height: 110vh;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%);
+        background-color: #00000080;
+    }
+
+    .-content{
+        transform: translate(0);
+    }
+
+    .-close-btn{
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}

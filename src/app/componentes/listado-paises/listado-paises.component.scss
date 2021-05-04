@@ -1,0 +1,26 @@
+
+tr {
+    &:hover{
+        td{
+            background-color: #212529c7;
+            cursor: pointer;
+        }
+    }
+}
+
+.-selected {
+    td{
+        background-color: #535d66c7;
+        cursor: pointer;
+    }
+}
+
+
+table {
+    table-layout: fixed;
+}
+
+.-paises-wrapper{
+    max-height: 500px;
+    overflow: auto;
+}

@@ -1,0 +1,56 @@
+
+<div class="row mt-4">
+    <div class="col-12">
+        <table *ngIf=peliculas.source class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Estreno</th>
+                    <th>Tipo</th>
+                    <th>Publico</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pelicula of peliculas | async" (click)="handleDetails(pelicula, pelicula.docID)">
+                    <td>{{ pelicula.nombre }}</td>
+                    <td>{{ pelicula.fechaEstreno }}</td>
+                    <td>{{ pelicula.tipo }}</td>
+                    <td>{{ pelicula.cantidadPublico }}</td>
+                    <td>
+                        <img src="{{pelicula.fotoPelicula}}" alt="Foto Pelicula" width="150px" height="auto">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div *ngIf=selectedMovie.nombre class="-modal">
+            <div class="-modal-bg"></div>
+            <div class="-content bg-dark p-4 text-light rounded">
+                <div class="d-flex justify-content-end">
+                    <div class="-close-btn" (click)="handleCloseDetails()">X</div>
+                </div>
+                <h3 class="mb-4">{{ selectedMovie.nombre }}</h3>
+                <p>
+                    <strong>Fecha de estreno: </strong> {{selectedMovie.fechaEstreno}}
+                </p>
+                <p>
+                    <strong>Tipo: </strong> {{selectedMovie.tipo}}
+                </p>
+                <p>
+                    <strong>Cantidad de publico: </strong> {{selectedMovie.cantidadPublico}}
+                </p>
+                <img src="{{selectedMovie.fotoPelicula}}" alt="Foto Pelicula" width="100%" height="auto">
+                <div class="mt-4 d-flex justify-content-end">
+                    <button id="{{selectedMovie.id}}" class="btn btn-danger" (click)="handleDelete(selectedMovie.id)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

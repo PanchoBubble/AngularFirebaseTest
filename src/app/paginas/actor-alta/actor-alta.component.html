@@ -1,0 +1,35 @@
+<div class="row align-items-center">
+    <div class="col-8">
+        <form name="myForm" (submit)="addActor()" class="form bg-light p-4" style="border-radius: 20px; box-shadow: 4px 5px 17px 0px #0000007a; ">
+            <h1>Registrar actor</h1>
+            <div class="form-group my-4">
+                <label for="nombre">Nombre</label>
+                <input ngModel [(ngModel)]="actor.nombre" type="text" class="form-control" name="nombre" id="nombre" required>
+            </div>
+            <div class="form-group my-4">
+                <label for="apellido">Apellido</label>
+                <input ngModel [(ngModel)]="actor.apellido" type="text" class="form-control" name="apellido" id="apellido" required>
+            </div>
+            <div class="form-group my-4">
+                <label for="edad">Edad</label>
+                <input ngModel [(ngModel)]="actor.edad" class="form-control" min="0" type="number" name="edad" id="edad" required>
+            </div>
+
+            <div class="form-group my-4">
+                <label for="imagen">Foto url</label>
+                <input ngModel [(ngModel)]="actor.foto" class="form-control" min="0" type="text" name="imagen" id="imagen" required>
+            </div>
+
+            <div class="form-group my-4">
+                <label for="pais">Nacionalidad</label>
+                <input disabled ngModel [(ngModel)]="actor.pais.name" type="text" class="form-control" name="pais" id="pais" required>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary w-100">Añadir</button>
+        </form>
+    </div>
+    <div class="col-4">
+        <app-listado-paises [handleSelect]=handleSelect ></app-listado-paises>
+    </div>
+</div>

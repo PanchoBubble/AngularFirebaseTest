@@ -1,0 +1,25 @@
+
+<div class="form-group my-4">
+    <label for="nombre">Buscar</label>
+    <input ngModel [(ngModel)]="filter" type="text" class="form-control" name="nombre" id="nombre" required>
+</div>
+<div class="-paises-wrapper">
+    <table *ngIf="paises.length > 0 " class="table table-dark">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Bandera</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of getList()" (click)="handleClick(pais)" [ngClass]="selected == pais ? '-selected' : ''" >
+                <td>{{ pais.name }}</td>
+                <td>{{ pais.capital }}</td>
+                <td>
+                    <img src="{{pais.flag}}" alt="Foto Bandera" width="50px" height="auto">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

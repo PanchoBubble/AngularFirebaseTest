@@ -1,0 +1,52 @@
+<div class="row mt-4">
+    <div class="col-12">
+        <table *ngIf=actores.source class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Nacionalidad</th>
+                    <th>Pais</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let actor of actores | async" (click)="handleDetails(actor, actor.docID)">
+                    <td>{{ actor.nombre }}</td>
+                    <td>{{ actor.apellido }}</td>
+                    <td>{{ actor.edad }}</td>
+                    <td>
+                        <img src="{{actor.pais.flag}}" alt="Foto Bandera" width="150px" height="auto">
+                    </td>
+                    <td>
+                        <img src="{{actor.foto}}" alt="Foto Pelicula" width="150px" height="auto">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div *ngIf=selectedActor.nombre class="-modal">
+            <div class="-modal-bg"></div>
+            <div class="-content bg-dark p-4 text-light rounded">
+                <div class="d-flex justify-content-end">
+                    <div class="-close-btn" (click)="handleCloseDetails()">X</div>
+                </div>
+                <h3 class="mb-4">{{ selectedActor.nombre }} {{ selectedActor.apellido }}</h3>
+                <p>
+                    <strong>Nacionalidad: </strong> {{selectedActor.pais.name}}
+                </p>
+                <img src="{{selectedActor.foto}}" alt="Foto actor" width="100%" height="auto">
+                <div class="mt-4 d-flex justify-content-end">
+                    <button id="{{selectedActor.id}}" class="btn btn-danger" (click)="handleDelete(selectedActor.id)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
